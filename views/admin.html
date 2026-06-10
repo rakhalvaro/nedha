@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Nedha | Kelola Mitra & Menu Sehat</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/admin.css">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Layout Wrapper -->
+  <div class="admin-wrapper">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-logo"><i class="fa-solid fa-seedling"></i></span>
+        <div class="brand-text">
+          <span class="brand-name">NEDHA</span>
+          <span class="brand-role">Control Center</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <button class="menu-item active" data-target="section-dashboard">
+          <i class="fa-solid fa-chart-line"></i> Dashboard
+        </button>
+        <button class="menu-item" data-target="section-partners">
+          <i class="fa-solid fa-store"></i> Kelola Mitra
+        </button>
+        <button class="menu-item" data-target="section-menu">
+          <i class="fa-solid fa-utensils"></i> Kelola Menu Makanan
+        </button>
+        <button class="menu-item" data-target="section-orders" id="nav-orders-btn">
+          <i class="fa-solid fa-receipt"></i> Manajemen Pesanan
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" target="_blank" class="view-site-link">
+          <i class="fa-solid fa-globe"></i> Lihat Landing Page
+        </a>
+        <a href="/logout" class="logout-link">
+          <i class="fa-solid fa-right-from-bracket"></i> Keluar (Logout)
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar-title">
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="admin-profile">
+          <div class="profile-info">
+            <span class="profile-name">Administrator</span>
+            <span class="profile-status"><span class="status-indicator-green"></span> Online</span>
+          </div>
+          <div class="profile-avatar">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+        </div>
+      </header>
+
+      <!-- Inner Content -->
+      <div class="content-body">
+        
+        <!-- SECTION 1: DASHBOARD -->
+        <section id="section-dashboard" class="content-section active">
+          
+          <!-- Quick Statistics Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon bg-green-light text-green">
+                <i class="fa-solid fa-eye"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="dashViews">0</span>
+                <span class="stat-card-label">Kunjungan Web (Views)</span>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-card-icon bg-blue-light text-blue">
+                <i class="fa-solid fa-circle-down"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="dashDownloads">0</span>
+                <span class="stat-card-label">Jumlah Download APK</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-icon bg-orange-light text-orange">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="dashPartners">0</span>
+                <span class="stat-card-label">Total Mitra Terdaftar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversion Performance Info -->
+          <div class="dashboard-details-grid">
+            <div class="details-card performance-chart-card">
+              <h3>Performa Konversi</h3>
+              <div class="conversion-visual">
+                <div class="conversion-circle-wrapper">
+                  <svg class="progress-ring" width="120" height="120">
+                    <circle class="progress-ring-circle-bg" stroke="#E6EBE6" stroke-width="12" fill="transparent" r="50" cx="60" cy="60"/>
+                    <circle class="progress-ring-circle" id="conversionCircle" stroke="var(--primary)" stroke-width="12" fill="transparent" r="50" cx="60" cy="60"/>
+                  </svg>
+                  <div class="conversion-value" id="conversionVal">0%</div>
+                </div>
+                <div class="conversion-info">
+                  <p><strong>Rasio Download APK:</strong></p>
+                  <p class="conversion-text">Persentase pengunjung landing page yang mengklik tombol download aplikasi Flutter.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="details-card recent-partners-card">
+              <h3>Mitra Terbaru</h3>
+              <ul class="recent-list" id="recentPartnersList">
+                <!-- Rendered dynamically -->
+                <li class="loading-item">Memuat data mitra terbaru...</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: MANAGE PARTNERS (KELOLA MITRA) -->
+        <section id="section-partners" class="content-section">
+          <div class="section-actions">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchPartnerInput" placeholder="Cari nama mitra atau kategori...">
+            </div>
+            <button class="btn btn-primary" id="openAddPartnerBtn">
+              <i class="fa-solid fa-plus"></i> Tambah Mitra Baru
+            </button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Logo</th>
+                  <th>Nama Resto/Mitra</th>
+                  <th>Kategori</th>
+                  <th>Telepon & Alamat</th>
+                  <th>Rating</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="partnersTableBody">
+                <!-- Rendered dynamically -->
+                <tr>
+                  <td colspan="6" class="text-center">Memuat data mitra...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 3: MANAGE MENU (KELOLA MENU) -->
+        <section id="section-menu" class="content-section">
+          <div class="menu-control-bar">
+            <div class="partner-selector">
+              <label for="selectPartnerMenu">Pilih Mitra Restoran:</label>
+              <select id="selectPartnerMenu" class="form-control select-dropdown">
+                <!-- Loaded dynamically -->
+              </select>
+            </div>
+            <button class="btn btn-primary" id="openAddMenuBtn" disabled>
+              <i class="fa-solid fa-plus"></i> Tambah Menu Makanan Baru
+            </button>
+          </div>
+
+          <div id="menuContentPlaceholder" class="menu-placeholder-info">
+            <i class="fa-solid fa-store-slash"></i> Silakan pilih mitra restoran di atas untuk melihat dan mengelola menu sehat mereka.
+          </div>
+
+          <div id="menuTableWrapper" class="table-container" style="display: none;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Gambar</th>
+                  <th>Nama Menu</th>
+                  <th>Harga</th>
+                  <th>Nutrisi Gizi (Kkal | P | K | L)</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="menuTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 4: ORDER MANAGEMENT (MANAJEMEN PESANAN) -->
+        <section id="section-orders" class="content-section">
+          
+          <!-- Summary Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon bg-blue-light text-blue">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="ordersTotalCount">0</span>
+                <span class="stat-card-label">Total Pesanan</span>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-card-icon bg-green-light text-green">
+                <i class="fa-solid fa-rupiah-sign"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="ordersTotalRevenue">Rp 0</span>
+                <span class="stat-card-label">Total Pendapatan</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-icon bg-orange-light text-orange">
+                <i class="fa-solid fa-calendar-day"></i>
+              </div>
+              <div class="stat-card-data">
+                <span class="stat-card-num" id="ordersTodayCount">0</span>
+                <span class="stat-card-label">Pesanan Hari Ini</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-actions" style="margin-top: 25px;">
+            <div class="filter-box">
+              <label for="filterOrderStatus" style="font-weight: 600;">Filter Status:</label>
+              <select id="filterOrderStatus" class="form-control select-dropdown" style="width: 200px; display: inline-block; margin-left: 10px; min-width: auto;">
+                <option value="">Semua Status</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID Pesanan</th>
+                  <th>Nama User</th>
+                  <th>Nama Mitra</th>
+                  <th>Total Harga</th>
+                  <th>Status</th>
+                  <th>Tanggal</th>
+                  <th>Menu Dipesan</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Rendered dynamically -->
+                <tr>
+                  <td colspan="8" class="text-center">Memuat data pesanan...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Analytics Section: Top 5 Menus & Partners -->
+          <div class="dashboard-details-grid" style="margin-top: 30px;">
+            <div class="details-card">
+              <h3><i class="fa-solid fa-fire text-orange"></i> Top 5 Menu Terlaris</h3>
+              <div class="table-container" style="box-shadow: none; padding: 0; margin-top: 15px; border: none;">
+                <table class="admin-table mini-table">
+                  <thead>
+                    <tr>
+                      <th>Nama Menu</th>
+                      <th class="text-center">Kuantitas Terjual</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topMenusStatsBody">
+                    <!-- Loaded dynamically -->
+                    <tr>
+                      <td colspan="2" class="text-center">Memuat data...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="details-card">
+              <h3><i class="fa-solid fa-award text-green"></i> Top 5 Mitra Teraktif</h3>
+              <div class="table-container" style="box-shadow: none; padding: 0; margin-top: 15px; border: none;">
+                <table class="admin-table mini-table">
+                  <thead>
+                    <tr>
+                      <th>Nama Mitra</th>
+                      <th class="text-center">Jumlah Pesanan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="topPartnersStatsBody">
+                    <!-- Loaded dynamically -->
+                    <tr>
+                      <td colspan="2" class="text-center">Memuat data...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: ADD / EDIT PARTNER -->
+  <div class="modal-overlay" id="partnerModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="partnerModalTitle">Tambah Mitra Restoran</h2>
+        <button class="close-modal-btn" id="closePartnerModalBtn">&times;</button>
+      </div>
+      <form id="partnerForm" class="modal-form">
+        <input type="hidden" id="partnerIdField">
+        
+        <div class="form-group">
+          <label for="partnerName">Nama Restoran / Toko Sehat <span class="required">*</span></label>
+          <input type="text" id="partnerName" class="form-control" required placeholder="Contoh: Dapur Keto Hijau">
+        </div>
+
+        <div class="form-group">
+          <label for="partnerDescription">Deskripsi Pendek <span class="required">*</span></label>
+          <textarea id="partnerDescription" class="form-control" rows="3" required placeholder="Tuliskan keunggulan kuliner sehat dari mitra ini..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Kategori Sehat <span class="required">*</span></label>
+            <div class="tag-input-container" id="tagInputContainer">
+              <div class="tags-list" id="tagsList"></div>
+              <input type="text" id="tagInput" placeholder="Ketik kategori lalu tekan Enter atau koma...">
+            </div>
+            <span class="form-help-text">Tekan Enter atau tanda koma (,) untuk menambahkan tag kategori.</span>
+          </div>
+          <div class="form-group">
+            <label for="partnerPhone">Nomor Telepon</label>
+            <input type="text" id="partnerPhone" class="form-control" placeholder="Contoh: 0812xxxxxxxx">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="partnerAddress">Alamat Lengkap</label>
+          <input type="text" id="partnerAddress" class="form-control" placeholder="Contoh: Jl. Kaliurang KM 5, Yogyakarta">
+        </div>
+
+        <div class="form-group">
+          <label>Unggah Logo Mitra</label>
+          <div class="upload-area">
+            <input type="file" id="partnerLogoInput" accept="image/*" style="display: none;">
+            <div class="upload-preview-wrap" id="partnerLogoPreviewWrap">
+              <img src="/images/default-partner.jpg" id="partnerLogoPreview" class="upload-preview-img">
+            </div>
+            <div class="upload-btn-group">
+              <button type="button" class="btn btn-secondary" onclick="document.getElementById('partnerLogoInput').click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Pilih File Gambar
+              </button>
+              <input type="text" id="partnerLogoUrl" class="form-control" placeholder="Atau tempelkan URL logo/gambar disini" style="margin-top: 10px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelPartnerModalBtn">Batal</button>
+          <button type="submit" class="btn btn-primary" id="savePartnerBtn">Simpan Mitra</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD MENU ITEM -->
+  <div class="modal-overlay" id="menuModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="menuModalTitle">Tambah Menu Makanan Sehat</h2>
+        <button class="close-modal-btn" id="closeMenuModalBtn">&times;</button>
+      </div>
+      <form id="menuForm" class="modal-form">
+        <input type="hidden" id="menuPartnerIdField">
+        
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label for="menuName">Nama Menu Makanan/Minuman <span class="required">*</span></label>
+            <input type="text" id="menuName" class="form-control" required placeholder="Contoh: Salad Buah Yogurt">
+          </div>
+          <div class="form-group flex-1">
+            <label for="menuPrice">Harga (Rp) <span class="required">*</span></label>
+            <input type="number" id="menuPrice" class="form-control" required placeholder="Contoh: 25000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="menuDescription">Deskripsi Menu & Komposisi</label>
+          <textarea id="menuDescription" class="form-control" rows="2" placeholder="Sebutkan bahan-bahan utama makanan..."></textarea>
+        </div>
+
+        <!-- Nutrition Grid -->
+        <h3 class="form-subtitle-nutri"><i class="fa-solid fa-chart-pie"></i> Informasi Nilai Gizi per Porsi</h3>
+        <div class="form-row nutrition-form-grid">
+          <div class="form-group">
+            <label for="menuCalories">Kalori (Kkal)</label>
+            <input type="number" id="menuCalories" class="form-control" value="0" min="0">
+          </div>
+          <div class="form-group">
+            <label for="menuProtein">Protein (gram)</label>
+            <input type="number" id="menuProtein" class="form-control" value="0" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="menuCarbs">Karbohidrat (gram)</label>
+            <input type="number" id="menuCarbs" class="form-control" value="0" min="0" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="menuFat">Lemak (gram)</label>
+            <input type="number" id="menuFat" class="form-control" value="0" min="0" step="0.1">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+          <label>Unggah Gambar Menu</label>
+          <div class="upload-area">
+            <input type="file" id="menuImageInput" accept="image/*" style="display: none;">
+            <div class="upload-preview-wrap" id="menuImagePreviewWrap">
+              <img src="/images/default-food.jpg" id="menuImagePreview" class="upload-preview-img">
+            </div>
+            <div class="upload-btn-group">
+              <button type="button" class="btn btn-secondary" onclick="document.getElementById('menuImageInput').click()">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Pilih File Gambar
+              </button>
+              <input type="text" id="menuImageUrl" class="form-control" placeholder="Atau tempelkan URL gambar menu disini" style="margin-top: 10px;">
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelMenuModalBtn">Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan Menu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript logic -->
+  <script src="/js/admin.js"></script>
+</body>
+</html>

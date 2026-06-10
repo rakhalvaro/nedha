@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nedha - Mangan Enak, Awak Kepenak | Marketplace Makanan Sehat</title>
+  <meta name="description" content="Nedha adalah marketplace makanan sehat terlengkap. Dapatkan makanan organik, diet keto, vegan, dan rendah kalori dengan info nutrisi lengkap langsung ke tempat Anda.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Batik Header Pattern (Subtle Top Border) -->
+  <div class="batik-top-border"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/" class="logo-area">
+        <img src="/images/logo.png" alt="Nedha Logo" class="nav-logo">
+        <div class="logo-text">
+          <span class="brand-name">NEDHA</span>
+          <span class="brand-slogan">Mangan Enak, Awak Kepenak.</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#mitra" class="nav-link">Mitra Resto</a>
+        <a href="#fitur" class="nav-link">Mengapa Kami</a>
+        <a href="#download" class="nav-btn">Download APK</a>
+      </nav>
+      <button class="hamburger-menu" id="hamburgerBtn" aria-label="Buka Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-seedling"></i> Pelopor Kuliner Sehat Yogyakarta</span>
+        <h1 class="hero-title">Makan Enak, Badan Sehat & Bugar</h1>
+        <p class="hero-desc">
+          Nedha menghubungkan Anda dengan berbagai restoran sehat lokal. Temukan makanan organik, menu keto, vegan, dan diet seimbang lengkap dengan kalkulator kalori dan informasi nutrisi makro yang detail.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#download" class="btn btn-primary" id="heroDownloadBtn">
+            <i class="fa-solid fa-download"></i> Download Aplikasi (APK)
+          </a>
+          <a href="#mitra" class="btn btn-secondary">
+            Eksplor Menu Sehat <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="statDownloads">0</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="statPartners">0</span>
+            <span class="stat-label">Mitra Resto</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Bahan Alami</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <img src="/images/hero.png" alt="Healthy Organic Salad Bowl" class="hero-image">
+          <div class="batik-overlay-pattern"></div>
+          <!-- Decorative Floating Card -->
+          <div class="floating-nutrition-card">
+            <div class="nutri-badge"><i class="fa-solid fa-circle-info"></i> Info Gizi Makro</div>
+            <div class="nutri-stats-grid">
+              <div class="nutri-stat"><span>320</span> kcal</div>
+              <div class="nutri-stat"><span>8g</span> Prot</div>
+              <div class="nutri-stat"><span>24g</span> Karb</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mitra Restoran Section -->
+  <section class="partners-section" id="mitra">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Mitra Restoran Sehat Kami</h2>
+        <p class="section-subtitle">Jelajahi berbagai pilihan menu diet sehat terpercaya dari mitra-mitra kuliner kami yang berdedikasi tinggi.</p>
+        
+        <!-- Category Filters -->
+        <div class="category-filters">
+          <button class="filter-btn active" data-category="all">Semua Kategori</button>
+          <button class="filter-btn" data-category="vegan">Vegan / Vegetarian</button>
+          <button class="filter-btn" data-category="keto">Diet Keto</button>
+          <button class="filter-btn" data-category="low carb">Rendah Karbo</button>
+          <button class="filter-btn" data-category="organic">Organik</button>
+        </div>
+      </div>
+
+      <!-- Partner Cards Grid -->
+      <div class="partners-grid" id="partnersGrid">
+        <!-- Rendered via JavaScript -->
+        <div class="loading-state">
+          <i class="fa-solid fa-circle-notch fa-spin"></i> Memuat daftar mitra...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="fitur">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Apa yang Membuat Nedha Istimewa?</h2>
+        <p class="section-subtitle">Kami peduli dengan kesehatan Anda secara menyeluruh, tidak hanya sekadar mengantarkan makanan.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Informasi Nutrisi Lengkap</h3>
+          <p>Setiap menu yang terdaftar dilengkapi informasi kalori serta kandungan protein, karbohidrat, dan lemak secara transparan.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>Kurasi Menu Spesifik</h3>
+          <p>Menu disaring berdasarkan tujuan kesehatan Anda, mulai dari diet keto, vegan, pencegahan diabetes, hingga diet pembentukan otot.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3>Mendukung Resto Lokal</h3>
+          <p>Tanpa biaya komisi yang mencekik. Semua mitra terdaftar dapat mempromosikan menu terbaik mereka secara gratis di Nedha.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section" id="download">
+    <div class="download-container">
+      <div class="download-visual">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <!-- Simulated App UI inside screen -->
+            <div class="app-header">
+              <span class="app-title"><i class="fa-solid fa-seedling"></i> Nedha Mobile</span>
+              <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="app-body">
+              <div class="app-banner">
+                <h4>Promo Spesial Sehat</h4>
+                <p>Makan enak, badan bugar!</p>
+              </div>
+              <div class="app-section-title">Rekomendasi Resto</div>
+              <div class="app-resto-card">
+                <div class="app-resto-img"></div>
+                <div class="app-resto-info">
+                  <h5>Salad House Batik</h5>
+                  <span>⭐ 4.8 | Diet Sehat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="download-content">
+        <h2 class="section-title">Siap Memulai Hidup Sehat?</h2>
+        <p>
+          Aplikasi mobile Nedha berbasis Flutter memberikan pengalaman terbaik dalam mencari, memilah, dan memesan makanan sehat di Yogyakarta. Unduh file instalasi APK kami langsung dan nikmati hidup bugar.
+        </p>
+
+        <div class="download-guide">
+          <h3>Cara Mengunduh & Memasang Aplikasi:</h3>
+          <ol class="guide-list">
+            <li>
+              <div class="step-num">1</div>
+              <div class="step-text">Klik tombol <strong>Download APK</strong> di bawah ini untuk mengunduh installer.</div>
+            </li>
+            <li>
+              <div class="step-num">2</div>
+              <div class="step-text">Jika muncul peringatan, izinkan pemasangan dari <strong>Sumber Tidak Dikenal</strong> pada pengaturan ponsel Android Anda.</div>
+            </li>
+            <li>
+              <div class="step-num">3</div>
+              <div class="step-text">Buka file <code>nedha-app.apk</code> yang selesai diunduh, klik <strong>Install</strong>, dan aplikasi siap digunakan!</div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="download-action-wrapper">
+          <a href="/downloads/nedha-app.apk" download class="btn btn-primary btn-large" id="mainDownloadBtn">
+            <i class="fa-solid fa-download"></i> Unduh Nedha APK Sekarang
+          </a>
+          <span class="download-note">*Kompatibel dengan Android 8.0 ke atas.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-area">
+          <div class="logo-text">
+            <span class="brand-name text-white">NEDHA</span>
+            <span class="brand-slogan text-light">Mangan Enak, Awak Kepenak.</span>
+          </div>
+        </div>
+        <p class="footer-about">Marketplace kuliner sehat dan bergizi untuk mewujudkan masyarakat yang lebih bugar dan bahagia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Tautan Cepat</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#mitra">Mitra Resto</a></li>
+          <li><a href="#fitur">Mengapa Kami</a></li>
+          <li><a href="/admin">Panel Admin <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Kontak</h4>
+        <p><i class="fa-solid fa-envelope"></i> info@nedha.id</p>
+        <p><i class="fa-solid fa-location-dot"></i> Sleman, D.I. Yogyakarta</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nedha Indonesia. All Rights Reserved. Made with ❤️ for healthy living.</p>
+    </div>
+  </footer>
+
+  <!-- Modal for Menu Items of Partner -->
+  <div class="modal-overlay" id="partnerModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div class="modal-header-content">
+        <div class="modal-partner-logo-wrap">
+          <img src="" alt="Partner Logo" id="modalPartnerLogo" class="modal-partner-logo">
+        </div>
+        <div class="modal-partner-info">
+          <h2 id="modalPartnerName">Nama Mitra</h2>
+          <p id="modalPartnerCategory" class="modal-partner-cat">Kategori</p>
+          <p id="modalPartnerAddress" class="modal-partner-addr"><i class="fa-solid fa-location-dot"></i> Alamat</p>
+        </div>
+      </div>
+      <div class="modal-body-content">
+        <h3>Daftar Menu Makanan Sehat</h3>
+        <div class="modal-menu-grid" id="modalMenuGrid">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript logic -->
+  <script src="/js/main.js"></script>
+</body>
+</html>
