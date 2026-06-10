@@ -2,7 +2,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
-const dbPath = path.join(__dirname, 'nedha.db');
+const dbPath = path.join('/app/storage', 'nedha.db');
 const oldDbPath = path.join(__dirname, 'database.json');
 
 const db = new Database(dbPath);
